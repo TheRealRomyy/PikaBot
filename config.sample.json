@@ -1,0 +1,14 @@
+{
+    "token": "TOK3N",
+    "prefix": "PREFIX",
+    "owners": ["OWNERS"],
+    "emojis": {
+        "succes": "SUCCESS EMOJI",
+        "info": "INFO EMOJI",
+        "error": "ERROR EMOJI",
+        "close": "LOCK EMOJI",
+        "label": "LABEL EMOJI",
+        "description": "DESCRIPTION EMOJI",
+        "time": "TIME EMOJI"
+    }
+}

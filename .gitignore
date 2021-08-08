@@ -1,0 +1,10 @@
+# Modules (From node)
+node_modules/
+package-lock.json
+yarn*.log
+
+# Configurations
+config.json
+
+# Build
+build
