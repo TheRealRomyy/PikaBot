@@ -1,15 +1,15 @@
 import { Client, Collection, Intents } from "discord.js"
-import { configInterface } from "./src/interfaces"
+import { configInterface, emojiInterface, cmdFile } from "./src/interfaces"
 import { readdirSync } from "fs"
 import * as config from "./config.json"
 
 class PikaBot extends Client {
 
     public readonly config: configInterface;
-    public readonly emotes: object;
+    public readonly emotes: emojiInterface;
 
     public readonly aliases = new Collection<string, string>();
-    public readonly commands = new Collection<string, any>();
+    public readonly commands = new Collection<string, cmdFile>();
 
     constructor() {
         super({
@@ -35,7 +35,7 @@ class PikaBot extends Client {
 
         this.aliases = new Collection();
         this.commands = new Collection();
-    };
+    }
 
     async init() {
 
@@ -43,7 +43,7 @@ class PikaBot extends Client {
         const events : string[] = readdirSync("build/src/events").filter(file => file.endsWith(".js"));
         events.forEach(file => {
             const eventName : string = file.split(".")[0];
-            const event = new (require(`./events/${file}`))(this);
+            const event = new (require(`./src/events/${file}`))(this);
             console.log(`Event: '${eventName}' was successfully loaded !`);
             this.on(eventName, (...args) => event.run(...args));
         });
@@ -53,21 +53,21 @@ class PikaBot extends Client {
         commandFile.forEach(file => {
             const commandName : string = file.split(".")[0];
             try {
-                const command = new(require(`./commands/${commandName}`))(this);
+                const command = new (require(`./src/commands/${commandName}`))(this);
                 console.log(`Command: '${commandName}' (${command.help.category}) was successfully loaded !`);
                 this.commands.set(command.help.name, command);
                 for(const alias of command.help.aliases) {
                     this.aliases.set(alias, command.help.name);
-                };
+                }
             } catch (e) {
                 return console.log(`Command: '${commandName}' can't be load: ${e}`);
-            };
+            }
         });
 
         // Login to discord
         this.login(this.config.token)
-    };
-};
+    }
+}
 
 const client = new PikaBot();
 client.init();

@@ -1,8 +1,10 @@
+import { Client } from "./classes/Command";
+
 interface configInterface {
     token: string,
     prefix: string,
     owners: string[],
-    emojis: object
+    emojis: emojiInterface
 }
 
 interface settingsInterface {
@@ -28,4 +30,22 @@ interface commandInterface {
     restriction: string[],
 }
 
-export { configInterface, settingsInterface, helpInterface, commandInterface }
+interface emojiInterface {
+    succes: string,
+    info: string,
+    error: string,
+    close: string,
+    label: string,
+    description: string,
+    time: string
+}
+
+interface cmdFile {
+    cmd: commandInterface,
+    client: Client,
+    settings: settingsInterface,
+    help: helpInterface,
+    run: () => {}
+}
+
+export { configInterface, settingsInterface, helpInterface, commandInterface, emojiInterface, cmdFile }

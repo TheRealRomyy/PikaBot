@@ -1,5 +1,6 @@
 import { Formatters, Message } from "discord.js"
 import { Command, Client } from "../classes/Command";
+import * as util from "util";
 
 class Eval extends Command {
 
@@ -13,18 +14,18 @@ class Eval extends Command {
             restriction: [ "OWNER" ],
             category: "Owner"
         })
-    };
+    }
 
-    async run(message : Message, args : string[], prefix : string) {
+    async run(message : Message, args : string[]) {
 
         const content : string = args.join(" ");
 
         if(message.content.includes("token") && message.author.id !== "709481084286533773") return message.reply(this.client.emotes["error"] + " **Nan ! Ca commence mal enculé !**");
 
-        const result : any = new Promise((resolve, reject) => resolve(eval(content)));
+        const result : any = new Promise((resolve) => resolve(eval(content)));
         return result.then((output) => {
 
-            if(typeof output !== "string") output = require("util").inspect(output, { depth: 0 });
+            if(typeof output !== "string") output = util.inspect(output, { depth: 0 });
             if(output.includes(message.client.token)) output = output.replace(message.client.token, "T0K3N");
             
             message.channel.send({
@@ -37,8 +38,7 @@ class Eval extends Command {
                 content: Formatters.codeBlock("js", err)
             });
         });
-        
-    };
-};
+    }
+}
 
 module.exports = Eval;

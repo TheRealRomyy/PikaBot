@@ -1,0 +1,26 @@
+{
+    "root": true,
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+
+    "parser": "@typescript-eslint/parser",
+    "env": {
+      "es2021": true,
+      "node": true
+    },
+
+    "rules": {
+      "eqeqeq": "warn",
+      "@typescript-eslint/no-extra-semi": "warn"
+    },
+
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ]
+}

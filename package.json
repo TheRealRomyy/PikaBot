@@ -4,15 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "node ./build/index.js"
+    "run": "node ./build/index.js",
+    "eslint": "eslint --ext .ts --max-warnings=0 .",
+    "build": "tsc"
   },
   "author": "Rome",
   "license": "ISC",
   "dependencies": {
     "discord.js": "13.0.1",
-    "fs": "^0.0.1-security"
+    "eslint": "^7.32.0",
+    "fs": "^0.0.1-security",
+    "typescript": "^4.3.5"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
     "@types/node": "^16.4.13"
   }
 }

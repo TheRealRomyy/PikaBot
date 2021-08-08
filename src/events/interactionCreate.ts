@@ -5,7 +5,7 @@ class InteractionCreate extends Event {
 
     constructor(client : Client) {
         super(client);
-    };
+    }
 
     async run (button : Interaction) {
 
@@ -17,8 +17,8 @@ class InteractionCreate extends Event {
 
         if(button.customId.includes("CLOSE")) {
 
-            let userID = (button.channel as TextChannel).name.split("-")[1];
-            let user = client.users.cache.get(userID);
+            const userID = (button.channel as TextChannel).name.split("-")[1];
+            const user = client.users.cache.get(userID);
 
             (button.channel as TextChannel).send(`${client.emotes["close"]} **Le ticket va être fermé dans 5 secondes !**`);
 
@@ -30,8 +30,8 @@ class InteractionCreate extends Event {
 
                 await button.channel.delete();
             }, 5000);
-        };
-    };
-};
+        }
+    }
+}
 
 module.exports = InteractionCreate;

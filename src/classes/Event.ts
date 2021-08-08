@@ -1,12 +1,12 @@
 import { Client, Collection } from "discord.js";
-import { configInterface } from "../interfaces";
+import { configInterface, emojiInterface, cmdFile } from "../interfaces";
 
 interface clientInterface extends Client {
 	config: configInterface,
-	emotes: object,
+	emotes: emojiInterface,
 	aliases: Collection<string, string>,
-	commands: Collection<string, any>,
-};
+	commands: Collection<string, cmdFile>,
+}
 
 class Event {
 
@@ -14,7 +14,7 @@ class Event {
 
 	constructor(client : clientInterface) {
 		this.client = client;
-	};
-};
+	}
+}
 
 export { Event, clientInterface as Client}
