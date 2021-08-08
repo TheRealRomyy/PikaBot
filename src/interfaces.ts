@@ -1,3 +1,4 @@
+import { Message } from "discord.js";
 import { Client } from "./classes/Command";
 
 interface configInterface {
@@ -45,7 +46,7 @@ interface cmdFile {
     client: Client,
     settings: settingsInterface,
     help: helpInterface,
-    run: () => {}
+    run: (message : Message, args : string[], prefix : string) => {}
 }
 
 export { configInterface, settingsInterface, helpInterface, commandInterface, emojiInterface, cmdFile }
