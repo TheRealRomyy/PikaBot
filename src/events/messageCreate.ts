@@ -1,5 +1,5 @@
 import { Client, Event } from "../classes/Event"
-import { MessageEmbed, Message, TextChannel, MessageActionRow, MessageButton } from "discord.js"
+import { MessageEmbed, Message, TextChannel, MessageActionRow, MessageButton, Channel, GuildChannel } from "discord.js"
 
 class MessageEvent extends Event {
 
@@ -22,10 +22,10 @@ class MessageEvent extends Event {
             if(!message.content) return;
             
             const hasAlreadyATicket = Boolean(pikaplouf.channels.cache.find(channel => channel.name === `ticket-${message.author.id}`));
-            const ticket : any = hasAlreadyATicket ? pikaplouf.channels.cache.find(channel => channel.name === `ticket-${message.author.id}`) : await pikaplouf.channels.create(`ticket-${message.author.id}`);
+            const ticket : Channel = hasAlreadyATicket ? pikaplouf.channels.cache.find(channel => channel.name === `ticket-${message.author.id}`) : await pikaplouf.channels.create(`ticket-${message.author.id}`);
             
             if(!hasAlreadyATicket) {
-                await ticket.setParent("848136168461303808");
+                await (ticket as GuildChannel).setParent("848136168461303808");
     
                 message.reply(`${this.client.emotes["succes"]} **Un ticket a bien été crée sur** \`${pikaplouf.name}\`.`)   
             } else {

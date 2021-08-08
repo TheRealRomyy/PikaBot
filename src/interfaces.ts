@@ -46,7 +46,7 @@ interface cmdFile {
     client: Client,
     settings: settingsInterface,
     help: helpInterface,
-    run: (message : Message, args : string[], prefix : string) => {}
+    run: (message : Message, args : string[], prefix : string) => Record<string, unknown>
 }
 
 export { configInterface, settingsInterface, helpInterface, commandInterface, emojiInterface, cmdFile }
