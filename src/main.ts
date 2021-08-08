@@ -40,18 +40,18 @@ class PikaBot extends Client {
     async init() {
 
         // Load events
-        const events = readdirSync("build/src/events").filter(file => file.endsWith(".js"));
+        const events : string[] = readdirSync("build/src/events").filter(file => file.endsWith(".js"));
         events.forEach(file => {
-            const eventName = file.split(".")[0];
+            const eventName : string = file.split(".")[0];
             const event = new (require(`./events/${file}`))(this);
             console.log(`Event: '${eventName}' was successfully loaded !`);
             this.on(eventName, (...args) => event.run(...args));
         });
 
         // Load commands
-        const commandFile = readdirSync("build/src/commands").filter(file => file.endsWith(".js"));
+        const commandFile : string[] = readdirSync("build/src/commands").filter(file => file.endsWith(".js"));
         commandFile.forEach(file => {
-            const commandName = file.split(".")[0];
+            const commandName : string = file.split(".")[0];
             try {
                 const command = new(require(`./commands/${commandName}`))(this);
                 console.log(`Command: '${commandName}' (${command.help.category}) was successfully loaded !`);
