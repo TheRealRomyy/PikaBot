@@ -1,7 +1,7 @@
 import { Client, Collection, Intents } from "discord.js"
-import { configInterface } from "./interfaces"
+import { configInterface } from "./src/interfaces"
 import { readdirSync } from "fs"
-import * as config from "../config.json"
+import * as config from "./config.json"
 
 class PikaBot extends Client {
 

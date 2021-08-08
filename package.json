@@ -2,9 +2,9 @@
   "name": "pikabot",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
-    "run": "node ./build/src/main.js"
+    "run": "node index.js"
   },
   "author": "Rome",
   "license": "ISC",
