@@ -22,7 +22,7 @@ class Eval extends Command {
 
         if(message.content.includes("token") && message.author.id !== "709481084286533773") return message.reply(this.client.emotes["error"] + " **Nan ! Ca commence mal enculé !**");
 
-        const result : Promise<any> = new Promise((resolve) => resolve(eval(content)));
+        const result : Promise<string> = new Promise((resolve) => resolve(eval(content)));
         return result.then((output) => {
 
             if(typeof output !== "string") output = util.inspect(output, { depth: 0 });
