@@ -11,7 +11,7 @@ PikaBot is an open source bot made in [typescript](https://fr.wikipedia.org/wiki
 
 **3)** Type in your terminal `git clone https://github.com/Whire-coder/PikaBot.git`
 
-**4)** Enjoy !
+**4)** Install dependencies (`yarn install`) install typescript (`yarn add typescript`) compile (`tsc`) then run (`npm run-script run`)
 
 
 Made on 💻 with ❤️ by [Rome](https://discord.com/users/709481084286533773)
